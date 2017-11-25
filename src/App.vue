@@ -1,31 +1,20 @@
 <template>
   <div id="app">
-    <!-- <loading v-show="loading"></loading> -->
+    <loading v-show="loading"></loading>
     <router-view/>
   </div>
 </template>
 
 <script>
-// import {mapGetters} from 'vuex'
-// import loading from './loading/loading.vue'
+import {mapGetters} from 'vuex'
+import loading from './loading/loading.vue'
 export default {
   name: 'app',
-  // computed:mapGetters([
-      // 'loading'
-    // ]),
-    // components: {
-      // loading
-    // }
+  computed:mapGetters([
+      'loading'
+    ]),
+    components: {
+      loading
+    }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

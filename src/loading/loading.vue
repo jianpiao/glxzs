@@ -18,8 +18,11 @@
 .loading{
   position: fixed;
   width: 100%;
+  height: 100%;
+  top: 32%;
+  left: 2%;
   text-align: center;
-  margin-top: 45%;
+  z-index: 1000;
 }
    
 .desc{

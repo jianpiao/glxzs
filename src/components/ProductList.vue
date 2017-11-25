@@ -1,19 +1,21 @@
 <template>
-  <ul>
-    <li v-for="p in products">
-      <img src="../assets/logo.png" alt="">
-      <div>
-          {{ p.title }} <br/>
-          {{ p.price | currency }}
-      </div>
-      <br>
-      <button
-        :disabled="!p.inventory"
-        @click="addToCart(p)">
-        添加到购物车
-      </button>
-    </li>
-  </ul>
+    <div class="pro">
+        <ul>
+            <li v-for="p in products">
+                <img src="../assets/logo.png" alt="">
+                <div>
+                    {{ p.title }} <br/>
+                    {{ p.price | currency }}
+                </div>
+                <br>
+                <button
+                    :disabled="!p.inventory"
+                    @click="addToCart(p)">
+                    添加到购物车
+                </button>
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -30,29 +32,31 @@ export default {
   }
 }
 </script>
-<style>
-html, body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  color: #2c3e50;
-}
+<style scoped>
 
 ul {
   line-height: 1.5em;
-  padding-left: 1.5em;
+  padding: 0;
+  width: 100%;
 }
 
 ul > li {
-    list-style-type: none;
+    width: 33%;
+    height: 200px;
     float: left;
+    list-style-type: none;
 }
 
-a {
-  color: #7f8c8d;
-  text-decoration: none;
+img{
+    width: 100px;
+    height: 100px;
 }
 
-a:hover {
-  color: #4fc08d;
+.pro{
+    position: absolute;
+    width: 100%;
+    top: 300px;
+    left: 0;
+    text-align: center;
 }
-
 </style>

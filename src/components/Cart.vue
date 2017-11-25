@@ -18,11 +18,12 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters({
-      products: 'cartProducts',
-      checkoutStatus: 'checkoutStatus'
+      products: 'cartProducts',//查看购物车全部内容
+      checkoutStatus: 'checkoutStatus'//查看购买状态成功还是失败
     }),
     total () {
       return this.products.reduce((total, p) => {
+        console.log(total+"||||||===========||||||"+p)
         return total + p.price * p.quantity
       }, 0)
     }
@@ -35,7 +36,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #2c3e50;
@@ -43,15 +44,18 @@ html, body {
 
 ul {
   line-height: 1.5em;
-  padding-left: 1.5em;
+  padding: 0;
 }
 
-a {
-  color: #7f8c8d;
-  text-decoration: none;
+ul li {
+    list-style-type: none;
 }
 
-a:hover {
-  color: #4fc08d;
+.cart{
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    right: 0;
+    text-align: center;
 }
 </style>
