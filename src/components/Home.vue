@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" >
     <header>
       <mu-appbar title="广理小助手" class="appbar">
       <mu-icon-button icon="menu" slot="left"  @click="toShopping"/>
@@ -23,8 +23,8 @@
           </mt-swipe>
       </div>
       <div class="content-map">
-         <div class="map-bottom">
-              <mu-tabs :value="activeTab" @change="handleTabChange">
+         <div class="map-bottom" ref="map"  @mousedown="ripp">
+              <!-- <mu-tabs :value="activeTab" @change="handleTabChange">
                 <mu-tab value="吃" title="吃"/>
                 <mu-tab value="喝" title="喝"/>
                 <mu-tab value="玩" title="玩"/>
@@ -35,7 +35,9 @@
               <div v-if="activeTab === '喝'"><p>喝</p></div>
               <div v-if="activeTab === '玩'"><p>喝</p></div>
               <div v-if="activeTab === '唱'"><p> 唱</p></div>
-              <div v-if="activeTab === '公交'"><p>公交</p></div>
+              <div v-if="activeTab === '公交'"><p>公交</p></div> -->
+              迪纳吉
+              <div class="ripple" ref="div1"></div>
          </div>
       </div>
     </div>
@@ -79,10 +81,33 @@ import { Swipe, SwipeItem } from 'mint-ui'
       },
       handleActive () {
         
+      },
+      ripp () {
+        rip(this.$refs.div1,this.$refs.map,window.screen.width)
       }  
     }
   }
 
+
+function rip(refDiv,parentDiv,windowSize) {
+    let size = windowSize
+    let this_ = refDiv.style
+    let x = event.pageX
+    let y = event.pageY 
+    let movex = parentDiv.offsetLeft
+    let movey = parentDiv.offsetTop
+    this_.position = 'absolute'
+    this_.marginTop = -(1.1*size) + 'px'
+    this_.marginLeft= -size + 'px'
+    this_.width = size*2 + 'px'
+    this_.height= size*2 + 'px' 
+    this_.left  = (x - movex) + 'px'
+    this_.top   = (y - movey) + 'px' 
+    this_.display = 'block'
+    setTimeout(() => {
+        this_.display = 'none'
+    }, 600);
+  }
 </script>
 
 <style scoped>
@@ -120,6 +145,7 @@ import { Swipe, SwipeItem } from 'mint-ui'
     height: calc(100% - 56px);
     top: 56px;
     left: 0;
+    overflow: hidden;
     background-color: #eee;
   }
 
@@ -152,8 +178,11 @@ import { Swipe, SwipeItem } from 'mint-ui'
   }
 
   .map-bottom{
+    position: relative;
     width: 100%;
     height: 40px;
+    text-align: center;
+    overflow: hidden;
   }
 
   .mu-tabs{
@@ -180,6 +209,25 @@ import { Swipe, SwipeItem } from 'mint-ui'
   .mu-bottom-item-active{
     color: rgba(0,0,0,1) !important;
   }
+
+  .ripple{
+    display:none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, .1);
+    animation: ripple 1s;
+    opacity: 1;
+}
+
+@keyframes ripple {
+   0% {
+	opacity: .5;
+	transform: scale(.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
 
 </style>
 
