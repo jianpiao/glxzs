@@ -11,7 +11,7 @@ import 'muse-ui/dist/muse-ui.css'
 import MintUI from 'mint-ui'
 import { Swipe, SwipeItem } from 'mint-ui'
 
-// import 'mint-ui/lib/style.css'
+import 'mint-ui/lib/style.css'
 
 
 
